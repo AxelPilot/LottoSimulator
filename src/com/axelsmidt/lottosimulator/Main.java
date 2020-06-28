@@ -10,7 +10,7 @@ public class Main {
 
         do {
             Lottery lottery = new Lottery();
-            Player player = new Player(1000000);
+            Player player = new Player(100000); // Each game starts with a balance of $100000,-.
             int drawCount;
 
             do {
@@ -19,7 +19,8 @@ public class Main {
 
                 for (int i=0; i < drawCount; i++) {
                     long prize = lottery.draw(player.deliverTicket());
-                    if (prize > 120) {
+
+                    if (prize > 15) {
                         System.out.println("Prize: " + prize);
                         player.collectPrize(prize);
                     }

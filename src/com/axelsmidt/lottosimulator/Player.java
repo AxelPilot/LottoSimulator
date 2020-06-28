@@ -11,15 +11,15 @@ public class Player {
     }
 
     public int[] deliverTicket() {
-        int[] coupon = new int[7];
+        int[] ticket = new int[7];
         SecureRandom randomNumbers = new SecureRandom();
 
         for (int i = 0; i <= 6; i++) {
-            coupon[i] = randomNumbers.nextInt(33) + 1;
-            this.balance -= 5;
+            ticket[i] = randomNumbers.nextInt(33) + 1;
         }
-        Arrays.sort(coupon);
-        return coupon;
+        Arrays.sort(ticket);
+        this.balance -= 1; // Each submitted lottery ticket costs $1.
+        return ticket;
     }
 
     public void collectPrize(long prize) {
