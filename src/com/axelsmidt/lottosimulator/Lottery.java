@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 
 /*
- *
+ * Main lottery class.
  */
 public class Lottery {
 
@@ -35,6 +35,10 @@ public class Lottery {
         return checkPrize(this.numbers, ticket);
     }
 
+    /*
+     * Returns true if int n does not exist within int[] a.
+     * Otherwise returns false.
+     */
     private boolean isUnique(int[] a, int n) {
         boolean unique = true;
         if (a.length > 1) {
@@ -78,6 +82,6 @@ public class Lottery {
     }
 
     public int[] getLotteryNumbers() {
-        return numbers;
+        return this.numbers;
     }
 }
