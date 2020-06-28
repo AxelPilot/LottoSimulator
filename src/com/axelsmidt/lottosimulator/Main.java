@@ -18,7 +18,7 @@ public class Main {
                 drawCount = input.nextInt();
 
                 for (int i=0; i < drawCount; i++) {
-                    long prize = lottery.draw(player.deliverCoupon());
+                    long prize = lottery.draw(player.deliverTicket());
                     if (prize > 120) {
                         System.out.println("Prize: " + prize);
                         player.collectPrize(prize);

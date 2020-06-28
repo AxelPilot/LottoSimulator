@@ -10,7 +10,7 @@ public class Player {
         this.balance = balance;
     }
 
-    public int[] deliverCoupon() {
+    public int[] deliverTicket() {
         int[] coupon = new int[7];
         SecureRandom randomNumbers = new SecureRandom();
 
