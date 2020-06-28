@@ -9,13 +9,12 @@ import java.util.Arrays;
 public class Lottery {
 
     /*
-     * Draws the winning numbers, compares the result to the delivered coupon,
+     * Draws the winning numbers, compares the result to the submitted lottery ticket,
      * and returns the prize won.
      */
-    public long draw(int[] coupon) {
+    public long draw(int[] ticket) {
         SecureRandom randomNumbers = new SecureRandom();
         int[] numbers = new int[7];
-        int prize = 0;
 
         // Draw winning numbers.
         for (int i = 0; i <= 6; i++) {
@@ -25,33 +24,33 @@ public class Lottery {
         // Sort winning numbers in ascending order.
         Arrays.sort(numbers);
 
-        return checkPrize(numbers, coupon);
+        return checkPrize(numbers, ticket);
     }
 
     /*
      * Check which prize was won, if any.
      */
-    private long checkPrize(int[] numbers, int[] coupon) {
+    private long checkPrize(int[] numbers, int[] ticket) {
         int correctNumberCount = 0;
         long prize = 0;
 
         for (int i = 0; i <= 6; i++) {
-            if (Arrays.binarySearch(numbers, coupon[i]) >= 0) {
+            if (Arrays.binarySearch(numbers, ticket[i]) >= 0) {
                 correctNumberCount++;
             }
         }
 
         switch (correctNumberCount) {
-            case 7:
+            case 7: // 1st prize.
                 prize = 14869835;
                 break;
-            case 6:
+            case 6: // 2nd prize.
                 prize = 4095;
                 break;
-            case 5:
+            case 5: // 3rd prize.
                 prize = 120;
                 break;
-            case 4:
+            case 4: // 4th prize.
                 prize = 50;
         }
 
