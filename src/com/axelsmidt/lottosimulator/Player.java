@@ -1,8 +1,5 @@
 package com.axelsmidt.lottosimulator;
 
-import java.security.SecureRandom;
-import java.util.Arrays;
-
 public class Player {
     private long balance;
 

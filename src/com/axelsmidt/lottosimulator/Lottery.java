@@ -23,7 +23,38 @@ public class Lottery {
     }
 
     /*
-     * Generates a sorted array the length of "count," with a sequence of unique int numbers.
+     * Check which prize was won, if any.
+     */
+    private long checkPrize(int[] ticket) {
+        int correctNumberCount = 0;
+        long prize = 0;
+
+        for (int i = 0; i <= 6; i++) {
+            if (Arrays.binarySearch(this.numbers, ticket[i]) >= 0) {
+                correctNumberCount++;
+            }
+        }
+
+        switch (correctNumberCount) {
+            case 7: // 1st prize.
+                prize = 1500000;
+                break;
+            case 6: // 2nd prize.
+                prize = 350;
+                break;
+            case 5: // 3rd prize.
+                prize = 15;
+                break;
+            case 4: // 4th prize.
+                prize = 5;
+        }
+
+        return prize;
+    }
+
+    /*
+     * Generates a sorted array the length of "count," with a sequence of
+     * randomly generated unique int numbers.
      */
     public static int[] generateUniqueNumbers(int count) {
         SecureRandom randomNumbers = new SecureRandom();
@@ -58,35 +89,5 @@ public class Lottery {
             }
         }
         return unique;
-    }
-
-    /*
-     * Check which prize was won, if any.
-     */
-    private long checkPrize(int[] ticket) {
-        int correctNumberCount = 0;
-        long prize = 0;
-
-        for (int i = 0; i <= 6; i++) {
-            if (Arrays.binarySearch(this.numbers, ticket[i]) >= 0) {
-                correctNumberCount++;
-            }
-        }
-
-        switch (correctNumberCount) {
-            case 7: // 1st prize.
-                prize = 1500000;
-                break;
-            case 6: // 2nd prize.
-                prize = 350;
-                break;
-            case 5: // 3rd prize.
-                prize = 15;
-                break;
-            case 4: // 4th prize.
-                prize = 5;
-        }
-
-        return prize;
     }
 }
