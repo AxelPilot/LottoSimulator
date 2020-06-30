@@ -10,7 +10,7 @@ public class Main {
 
         do {
             Lottery lottery = new Lottery();
-            Player player = new Player(100000); // Each game starts with a balance of $100000,-.
+            Player player = new Player(1000000); // Each game starts with a balance of $1000000,-.
             int drawCount;
 
             do {

@@ -23,7 +23,7 @@ public class Lottery {
         while (i <= 6) {
             n = randomNumbers.nextInt(34) + 1;
             // Ensure that the same number is not drawn multiple times.
-            if (isUnique(this.numbers, n)) {
+            if (Lottery.isUnique(this.numbers, n)) {
                 this.numbers[i] = n;
                 i++;
             }
@@ -32,14 +32,14 @@ public class Lottery {
         // Sort winning numbers in ascending order.
         Arrays.sort(this.numbers);
 
-        return checkPrize(this.numbers, ticket);
+        return Lottery.checkPrize(this.numbers, ticket);
     }
 
     /*
      * Returns true if int n does not exist within int[] a.
      * Otherwise returns false.
      */
-    private boolean isUnique(int[] a, int n) {
+    public static boolean isUnique(int[] a, int n) {
         boolean unique = true;
         if (a.length > 1) {
             for (int i = 0; i < a.length; i++) {
@@ -54,7 +54,7 @@ public class Lottery {
     /*
      * Check which prize was won, if any.
      */
-    private long checkPrize(int[] numbers, int[] ticket) {
+    private static long checkPrize(int[] numbers, int[] ticket) {
         int correctNumberCount = 0;
         long prize = 0;
 
@@ -66,7 +66,7 @@ public class Lottery {
 
         switch (correctNumberCount) {
             case 7: // 1st prize.
-                prize = 50000;
+                prize = 1500000;
                 break;
             case 6: // 2nd prize.
                 prize = 350;
@@ -79,9 +79,5 @@ public class Lottery {
         }
 
         return prize;
-    }
-
-    public int[] getLotteryNumbers() {
-        return this.numbers;
     }
 }
