@@ -18,6 +18,7 @@
 
 package com.axelsmidt.lottosimulator;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -32,24 +33,44 @@ public class Main {
             int drawCount;
 
             do {
+                long[][] prizes = new long[4][2];
                 // How many times do you want to play?
+                System.out.println();
+                System.out.println("Balance: " + player.getBalance());
                 System.out.print("Number of draws: ");
                 drawCount = input.nextInt();
+                System.out.println();
 
                 for (int i=0; i < drawCount; i++) {
                     // Let's play.
-                    long prize = lottery.draw(player.submitTicket());
+                    long[] prize = lottery.draw(player.submitTicket());
 
-                    // Let's see what you won (if > $15).
-                    if (prize > 15) {
-                        System.out.println("Prize: " + prize);
-                        player.collectPrize(prize);
+                    // Let's see what you won.
+                    if (prize[1] > 0) {
+                        prizes[(int) prize[0]][0]++;
+
+                        player.collectPrize(prize[1]);
                     }
                 }
 
-                // Your new balance is:
-                System.out.println("Balance: " + player.getBalance());
+                if (drawCount > 0) {
+                    long[] p = lottery.getPrizes();
+
+                    for (int i=0; i < p.length; i++) {
+                        prizes[i][1] = p[i];
+                    }
+
+                    // Displaying prizes won.
+                    System.out.println("1st prize: " + prizes[0][0] + "x" + prizes[0][1] + " = " + prizes[0][0] * prizes[0][1]);
+                    System.out.println("2nd prize: " + prizes[1][0] + "x" + prizes[1][1] + " = " + prizes[1][0] * prizes[1][1]);
+                    System.out.println("3rd prize: " + prizes[2][0] + "x" + prizes[2][1] + " = " + prizes[2][0] * prizes[2][1]);
+                    System.out.println("4th prize: " + prizes[3][0] + "x" + prizes[3][1] + " = " + prizes[3][0] * prizes[3][1]);
+
+                }
             } while ((drawCount > 0) && (player.getBalance() > 0));
+
+            // Your new balance is:
+            System.out.println("Balance: " + player.getBalance());
 
             if (player.getBalance() <= 0) {
                 System.out.println("You lost!");

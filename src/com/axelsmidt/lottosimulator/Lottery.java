@@ -27,12 +27,13 @@ import java.util.Arrays;
 public class Lottery {
 
     int[] numbers;
+    long[] prizes = {1500000, 350, 15, 5};
 
     /*
      * Draws the winning numbers, compares the result to the submitted lottery ticket,
      * and returns the prize won.
      */
-    public long draw(int[] ticket) {
+    public long[] draw(int[] ticket) {
         SecureRandom randomNumbers = new SecureRandom();
 
         // Draw winning numbers.
@@ -43,9 +44,9 @@ public class Lottery {
     /*
      * Check which prize was won, if any.
      */
-    private long checkPrize(int[] ticket) {
+    private long[] checkPrize(int[] ticket) {
         int correctNumberCount = 0;
-        long prize = 0;
+        long[] prize = new long[2];
 
         for (int i = 0; i <= 6; i++) {
             if (Arrays.binarySearch(this.numbers, ticket[i]) >= 0) {
@@ -55,16 +56,20 @@ public class Lottery {
 
         switch (correctNumberCount) {
             case 7: // 1st prize.
-                prize = 1500000;
+                prize[0] = 0;
+                prize[1] = prizes[0];
                 break;
             case 6: // 2nd prize.
-                prize = 350;
+                prize[0] = 1;
+                prize[1] = prizes[1];
                 break;
             case 5: // 3rd prize.
-                prize = 15;
+                prize[0] = 2;
+                prize[1] = prizes[2];
                 break;
             case 4: // 4th prize.
-                prize = 5;
+                prize[0] = 3;
+                prize[1] = prizes[3];
         }
 
         return prize;
@@ -107,5 +112,9 @@ public class Lottery {
             }
         }
         return unique;
+    }
+
+    public long[] getPrizes() {
+        return prizes;
     }
 }
