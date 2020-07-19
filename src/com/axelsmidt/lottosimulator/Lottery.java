@@ -34,8 +34,6 @@ public class Lottery {
      * and returns the prize won.
      */
     public long[] draw(int[] ticket) {
-        SecureRandom randomNumbers = new SecureRandom();
-
         // Draw winning numbers.
         this.numbers = Lottery.generateUniqueNumbers(7);
         return checkPrize(ticket);
@@ -55,21 +53,26 @@ public class Lottery {
         }
 
         switch (correctNumberCount) {
-            case 7: // 1st prize.
+            // 1st prize.
+            case 7 -> {
                 prize[0] = 0;
                 prize[1] = prizes[0];
-                break;
-            case 6: // 2nd prize.
+            }
+            // 2nd prize.
+            case 6 -> {
                 prize[0] = 1;
                 prize[1] = prizes[1];
-                break;
-            case 5: // 3rd prize.
+            }
+            // 3rd prize.
+            case 5 -> {
                 prize[0] = 2;
                 prize[1] = prizes[2];
-                break;
-            case 4: // 4th prize.
+            }
+            // 4th prize.
+            case 4 -> {
                 prize[0] = 3;
                 prize[1] = prizes[3];
+            }
         }
 
         return prize;
@@ -105,9 +108,10 @@ public class Lottery {
     private static boolean isUnique(int[] a, int n) {
         boolean unique = true;
         if (a.length > 1) {
-            for (int i = 0; i < a.length; i++) {
-                if (a[i] == n) {
+            for (int value : a) {
+                if (value == n) {
                     unique = false;
+                    break;
                 }
             }
         }
