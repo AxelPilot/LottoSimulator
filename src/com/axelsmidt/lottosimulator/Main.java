@@ -23,7 +23,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        int playAgain = 0;
+        int playAgain;
         Scanner input = new Scanner(System.in);
 
         do {
