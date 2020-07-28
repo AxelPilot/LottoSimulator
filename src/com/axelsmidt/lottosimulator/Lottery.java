@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Axel Smidt <http://AxelSmidt.com>.
+ * Copyright (c) 2020 Axel Smidt.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ public class Lottery {
 
     /*
      * Draws the winning numbers, compares the result to the submitted lottery ticket,
-     * and returns the prize won.
+     * and returns the prize and amount won.
      */
     public long[] draw(int[] ticket) {
         // Draw winning numbers.
@@ -41,6 +41,7 @@ public class Lottery {
 
     /*
      * Check which prize was won, if any.
+     * Returns a long array with the prize and amount won.
      */
     private long[] checkPrize(int[] ticket) {
         int correctNumberCount = 0;
@@ -89,14 +90,14 @@ public class Lottery {
         int i = 0;
         while (i < count) {
             n = randomNumbers.nextInt(34) + 1;
-            // Ensure that the same number is not drawn multiple times.
+            // Ensure that the same number is not generated multiple times.
             if (Lottery.isUnique(a, n)) {
                 a[i] = n;
                 i++;
             }
         }
 
-        // Sort winning numbers in ascending order.
+        // Sort generated numbers in ascending order.
         Arrays.sort(a);
         return a;
     }
