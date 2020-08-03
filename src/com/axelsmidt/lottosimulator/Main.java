@@ -106,5 +106,8 @@ public class Main {
 
         } while (playAgain == 1);
 
+        System.out.println();
+        System.out.println("Game over!");
+
     }
 }
