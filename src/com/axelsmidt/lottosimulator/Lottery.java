@@ -24,7 +24,7 @@ import java.util.Arrays;
 /*
  * Main lottery class.
  */
-public class Lottery {
+class Lottery {
 
     int[] numbers;
     long[] prizes = {1500000, 350, 15, 5};

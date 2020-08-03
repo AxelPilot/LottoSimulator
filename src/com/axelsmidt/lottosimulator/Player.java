@@ -18,7 +18,10 @@
 
 package com.axelsmidt.lottosimulator;
 
-public class Player {
+/**
+ *
+ */
+class Player {
     private long balance;
 
     public Player(int balance) {

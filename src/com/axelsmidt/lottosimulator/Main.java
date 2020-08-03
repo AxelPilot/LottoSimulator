@@ -18,27 +18,39 @@
 
 package com.axelsmidt.lottosimulator;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        int playAgain;
+        int playAgain = 0;
         Scanner input = new Scanner(System.in);
 
         do {
             Lottery lottery = new Lottery();
             Player player = new Player(1000000); // Each game starts with a balance of $1000000,-.
-            int drawCount;
+            int drawCount = 0;
 
             do {
                 long[][] prizes = new long[4][2];
                 // How many times do you want to play?
-                System.out.println();
-                System.out.println("Balance: " + player.getBalance());
-                System.out.print("Number of draws: ");
-                drawCount = input.nextInt();
-                System.out.println();
+
+                boolean validInput = false;
+                do {
+                    System.out.println();
+                    System.out.println("Balance: " + player.getBalance());
+                    System.out.print("Number of draws: ");
+                    try {
+                        drawCount = input.nextInt();
+                        validInput = true;
+                    } catch (InputMismatchException e) {
+                        System.out.println();
+                        System.out.println("An integer value is required!");
+                        System.out.println("Please try again!");
+                        input.nextLine();
+                    }
+                } while (!validInput);
 
                 for (int i=0; i < drawCount; i++) {
                     // Let's play.
@@ -75,8 +87,20 @@ public class Main {
                 System.out.println("You lost!");
             }
 
-            System.out.print("Do you want to play again? (1=Yes/0=No) ");
-            playAgain = input.nextInt();
+            boolean validInput = false;
+            do {
+                System.out.println();
+                System.out.print("Do you want to play again? (1=Yes/0=No) ");
+                try {
+                    playAgain = input.nextInt();
+                    validInput = true;
+                } catch (InputMismatchException e) {
+                    System.out.println();
+                    System.out.println("An integer value is required!");
+                    System.out.println("Please try again!");
+                    input.nextLine();
+                }
+            } while (!validInput);
 
         } while (playAgain == 1);
 
