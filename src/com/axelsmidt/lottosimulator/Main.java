@@ -65,19 +65,7 @@ public class Main {
                         player.collectPrize(prize[1]);
                     }
                 }
-/*
-                for (int i=0; i < drawCount; i++) {
-                    // Let's play.
-                    long[] prize = lottery.draw(player.submitTicket());
 
-                    // Let's see what you won.
-                    if (prize[1] > 0) {
-                        prizes[(int) prize[0]][0]++;
-
-                        player.collectPrize(prize[1]);
-                    }
-                }
-*/
                 if (drawCount > 0) {
                     long[] p = lottery.getPrizes();
 
