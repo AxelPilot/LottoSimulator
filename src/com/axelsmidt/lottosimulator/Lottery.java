@@ -21,15 +21,15 @@ package com.axelsmidt.lottosimulator;
 import java.security.SecureRandom;
 import java.util.Arrays;
 
-/*
- * Main lottery class.
+/**
+ * Lottery class.
  */
 class Lottery {
 
     int[] numbers;
     long[] prizes = {1500000, 350, 15, 5};
 
-    /*
+    /**
      * Draws the winning numbers, compares the result to the submitted lottery ticket,
      * and returns the prize and amount won.
      */
@@ -39,7 +39,7 @@ class Lottery {
         return checkPrize(ticket);
     }
 
-    /*
+    /**
      * Check which prize was won, if any.
      * Returns a long array with the prize and amount won.
      */
@@ -79,7 +79,7 @@ class Lottery {
         return prize;
     }
 
-    /*
+    /**
      * Generates a sorted array the length of "count," with a sequence of
      * randomly generated unique int numbers.
      */
@@ -102,7 +102,7 @@ class Lottery {
         return a;
     }
 
-    /*
+    /**
      * Returns true if int n does not exist within int[] a.
      * Otherwise returns false.
      */

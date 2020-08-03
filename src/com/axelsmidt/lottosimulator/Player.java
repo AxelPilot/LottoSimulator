@@ -19,7 +19,7 @@
 package com.axelsmidt.lottosimulator;
 
 /**
- *
+ * Player class
  */
 class Player {
     private long balance;
