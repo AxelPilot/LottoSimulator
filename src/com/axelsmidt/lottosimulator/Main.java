@@ -89,6 +89,7 @@ public class Main {
             System.out.println("Balance: " + player.getBalance());
 
             if (player.getBalance() <= 0) {
+                System.out.println();
                 System.out.println("You lost!");
             }
 
