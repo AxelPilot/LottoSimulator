@@ -26,13 +26,21 @@ import java.util.Scanner;
  */
 public class Main {
 
+    private static final long DEFAULT_BALANCE = 1000000;
+
     public static void main(String[] args) {
+        long balance = DEFAULT_BALANCE;
+        try {
+            if (args.length > 0) balance = Long.parseLong(args[0]);
+        } catch (NumberFormatException e) {
+        }
+
         int playAgain = 0;
         Scanner input = new Scanner(System.in);
 
         do {
             Lottery lottery = new Lottery();
-            Player player = new Player(1000000); // Each game starts with a balance of $1000000,-.
+            Player player = new Player(balance); // Each game starts with a balance of $1000000,-.
             int drawCount = 0;
 
             do {

@@ -24,7 +24,7 @@ package com.axelsmidt.lottosimulator;
 class Player {
     private long balance;
 
-    public Player(int balance) {
+    public Player(long balance) {
         this.balance = balance;
     }
 
