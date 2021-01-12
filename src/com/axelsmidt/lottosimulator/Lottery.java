@@ -26,14 +26,18 @@ import java.util.Arrays;
  */
 class Lottery {
 
-    int[] numbers;
-    long[] prizes = {1500000, 350, 15, 5};
+    private int[] numbers;
+    private long[] prizes;
+
+    public Lottery() {
+        prizes = new long[]{1500000, 350, 15, 5};
+    }
 
     /**
      * Draws the winning numbers, compares the result to the submitted lottery ticket,
      * and returns the prize and amount won.
      */
-    public long[] draw(int[] ticket) {
+    public long[] draw(Ticket ticket) {
         // Draw winning numbers.
         this.numbers = Lottery.generateUniqueNumbers(7);
         return checkPrize(ticket);
@@ -43,12 +47,12 @@ class Lottery {
      * Check which prize was won, if any.
      * Returns a long array with the prize and amount won.
      */
-    private long[] checkPrize(int[] ticket) {
+    private long[] checkPrize(Ticket ticket) {
         int correctNumberCount = 0;
         long[] prize = new long[2];
 
         for (int i = 0; i <= 6; i++) {
-            if (Arrays.binarySearch(this.numbers, ticket[i]) >= 0) {
+            if (Arrays.binarySearch(this.numbers, ticket.getTicket()[i]) >= 0) {
                 correctNumberCount++;
             }
         }

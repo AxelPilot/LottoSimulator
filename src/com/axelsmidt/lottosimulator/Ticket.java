@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Axel Smidt.
+ * Copyright (c) 2021 Axel Smidt.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,29 +18,19 @@
 
 package com.axelsmidt.lottosimulator;
 
-/**
- * Player class
- */
-class Player {
+class Ticket {
 
-    private long balance;
+    private int[] ticket;
 
-    public Player(long balance) {
-        this.balance = balance;
+    public Ticket() {
+        this.ticket = Lottery.generateUniqueNumbers(7);
     }
 
-    protected Ticket submitTicket() {
-        Ticket ticket = new Ticket();
-        this.balance -= 1; // Each submitted lottery ticket costs $1.
+    public Ticket(int count) {
+        this.ticket = Lottery.generateUniqueNumbers(count);
+    }
+
+    protected int[] getTicket() {
         return ticket;
     }
-
-    protected void collectPrize(long prize) {
-        this.balance += prize;
-    }
-
-    protected long getBalance() {
-        return this.balance;
-    }
-
 }

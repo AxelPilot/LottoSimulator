@@ -33,6 +33,7 @@ public class Main {
         try {
             if (args.length > 0) balance = Long.parseLong(args[0]);
         } catch (NumberFormatException e) {
+            System.out.println("Invalid parameters. An integer value is required!");
         }
 
         int playAgain = 0;
@@ -80,7 +81,7 @@ public class Main {
                 if (drawCount > 0) {
                     long[] p = lottery.getPrizes();
 
-                    for (int i=0; i < p.length; i++) {
+                    for (int i = 0; i < p.length; i++) {
                         prizes[i][1] = p[i];
                     }
 
@@ -120,6 +121,5 @@ public class Main {
 
         System.out.println();
         System.out.println("Game over!");
-
     }
 }
