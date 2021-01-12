@@ -83,6 +83,10 @@ class Lottery {
         return prize;
     }
 
+    public long[] getPrizes() {
+        return prizes;
+    }
+
     /**
      * Generates a sorted array the length of "count," with a sequence of
      * randomly generated unique int numbers.
@@ -121,9 +125,5 @@ class Lottery {
             }
         }
         return unique;
-    }
-
-    public long[] getPrizes() {
-        return prizes;
     }
 }
